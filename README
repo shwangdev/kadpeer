@@ -1,0 +1,27 @@
+
+
+What is KadPeer ?
+
+KadPeer is a software that aims at p2p framework with kad algorithm build-in , and cross-Linux-distribution GPL.
+kadpeer will be a rich featured, high quality and good performance VoD client .
+
+What does KadPeer hope to do?
+
+KadPeer will be next VoD generation with P2P framework.
+
+What can KadPeer do?
+
+Make VoD more rich featured,and convenient for Linux users.
+
+How to install Kadpeer ?
+
+For this moment , KadPeer is under developing .
+
+And Max Feng and I will set up the frame work of KadPeer .
+
+After this , you can install KadPeer with command make and make install.
+
+How to be the developer of the KadPeer Developer Group?
+
+First ,you should have the launchpad account. 
+Second , you can send me a mail, i will add you to the mail list.
