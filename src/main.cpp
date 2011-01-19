@@ -177,18 +177,17 @@ int main(int argc, char * argv[])
     }
     else
     {
+
         ContactInfo info;
         KadID min_id(BigInt::Rossi(1));
         KadID max_id(BigInt::Rossi(10));
         KadID max1,min1;
         kad::KadID::SplitRange(min_id,max_id,& min1,&max1);
-        std::cout<<max1<<"\t"<<min1<<std::endl;
-        std::cout<<KadID::KMaxID()<<std::endl;
-        std::cout<<KadID::KMinID()<<std::endl;
-        TTimer timer(REAL_TIME);
-        std::cout<<static_cast<double> (timer.system_time())<<std::endl;
-
-        std::cout<<static_cast<int> (timer.system_time())<<std::endl;
+        //std::cout<<max1<<"\t"<<min1<<std::endl;
+        //std::cout<<KadID::KMaxID()<<std::endl;
+        //std::cout<<KadID::KMinID()<<std::endl;
+        TTimer timer;
+        std::cout<<static_cast<uint32_t>(timer.current())<<std::endl;
     }
     UDT::cleanup();
 }

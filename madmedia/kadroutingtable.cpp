@@ -94,7 +94,7 @@ namespace kad{
         if (index < 0)
             return;
         TTimer timer;
-        k_buckets_[index]->set_last_accessed(static_cast<unsigned int>(timer.system_time()));
+        k_buckets_[index]->set_last_accessed(static_cast<unsigned int>(timer.current()));
     }
 
     void RoutingTable::RemoveContact(const KadID &node_id, const bool &force) {

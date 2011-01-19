@@ -17,8 +17,9 @@
 
 #include <iostream>
 
+#include <ctime>
 // type for different timer-measurment
-typedef enum { REAL_TIME, CPU_TIME, USER_TIME, SYSTEM_TIME }  timetype_t;
+typedef enum { REAL_TIME, CPU_TIME, USER_TIME, SYSTEM_TIME , DURATION }  timetype_t;
 
 //
 // the timer class
@@ -36,18 +37,31 @@ protected:
 
     struct rusage   _rusage_data;
     // what kind of time we should stop
+
     timetype_t      _type;
 
 
 public:
 
 
-    TTimer ( timetype_t type = CPU_TIME ) : _start(0), _stop(0), _type(type) {}
+    TTimer ( timetype_t type = USER_TIME ) : _start(0), _stop(0), _type(type) {}
 
 
-    TTimer & start    () { _stop = _start = system_time(); return *this; }
-    TTimer & stop     () { _stop =          system_time(); return *this; }
+    TTimer & start    () {
+        _stop = _start = system_time();
+        return *this;
+    }
+    TTimer & stop     () {
+        _stop =          system_time();
+        return *this;
+    }
 
+    long current ()
+    {
+        time_t sec;
+        time(&sec);
+        return static_cast<long> (sec);
+    }
 
     float diff () const { return _stop - _start; }
 

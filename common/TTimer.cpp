@@ -50,9 +50,12 @@ TTimer::system_time ()
         getrusage( RUSAGE_SELF, & _rusage_data );
         sec  = _rusage_data.ru_stime.tv_sec;
         usec = _rusage_data.ru_stime.tv_usec;
-
         break;
 
+    case DURATION:
+        usec = 0.0 ;
+        sec = clock();
+        break;
     default :
         std::cout << "TTimer::system_time : unsupported type of time" << std::endl;
         sec = usec = 0.0;
@@ -65,8 +68,16 @@ TTimer::system_time ()
 std::ostream &
 operator << ( std::ostream & os, const TTimer & timer )
 {
+
     double  time;
     long    seconds, mseconds;
+
+    if ( DURATION == timer._type )
+    {
+        time = 0 > timer.diff() ? 0 : timer.diff();
+        os << time/(CLOCKS_PER_SEC);
+        return os;
+    }
 
     time     = 0 > timer.diff() ? 0 : timer.diff();
     seconds  = long( floor( time ) );

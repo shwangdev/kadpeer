@@ -24,7 +24,7 @@ namespace kad{
     {
         std::ostringstream raw;
         TTimer timer;
-        double tmp_time=timer.system_time();
+        long  tmp_time=timer.current();
         raw << tmp_time;
         SHA1 sha1;
         sha1.Reset();
@@ -57,19 +57,10 @@ namespace kad{
 
     KadID::KadID( const KadID & min , const KadID & max)
     {
-        while(1)
-        {
-            std::stringstream oss;
-            TTimer timer;
-            oss<<timer.system_time();
-            SHA1 sha1;
-            sha1.Reset();
-            sha1<<oss.str().c_str();
-            sha1.Result(raw_id);
-            if ( *this <= max && *this >= min)
-                break;
-        }
+        BigInt::Rossi _min(min.raw_id), _max(max.raw_id);
+        this->raw_id = ( _min + _max) >> 1;
     }
+
     const KadID KadID::KMaxID()
     {
         std::string raw(160,'1');
