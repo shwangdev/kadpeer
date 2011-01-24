@@ -1,9 +1,9 @@
 sbin_PROGRAMS = kadpeer
-kadpeer_SOURCES = madmedia/contact.cpp\
-				  madmedia/kadroutingtable.cpp \
-				  madmedia/kadid.cpp\
-			      madmedia/datastore.cpp\
-				  madmedia/kbucket.cpp\
+kadpeer_SOURCES = kademlia/contact.cpp\
+				  kademlia/kadroutingtable.cpp \
+				  kademlia/kadid.cpp\
+			      kademlia/datastore.cpp\
+				  kademlia/kbucket.cpp\
 		          common/sha1.cpp\
     			  common/TThreadPool.cpp\
  			      common/TTimer.cpp\
@@ -22,6 +22,6 @@ kadpeer_CPPFLAGS = -I ../include \
 		   -I../include/common\
 		   -I../tinyxml\
 		   -I../udt\
-		   -I./madmedia
+		   -I./kademlia
 DEFS=-DTIXML_USE_STL
 LDADD = ../udt/.libs/libudt.a ../tinyxml/.libs/libtinyxml.a ../librtmp/.libs/librtmp.a -lpthread
