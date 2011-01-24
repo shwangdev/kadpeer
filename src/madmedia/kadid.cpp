@@ -153,6 +153,11 @@ namespace kad{
         return  static_cast<bool> ( !( ls<rs));
     }
 
+    bool operator == ( const KadID & ls, const KadID & rs )
+    {
+        return static_cast<bool> ( ls.raw_id == rs.raw_id );
+    }
+
     BigInt::Rossi KadID::getRawID()
     {
         return this->raw_id;

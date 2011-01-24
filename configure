@@ -15110,7 +15110,7 @@ fi
 done
 
 
-ac_config_files="$ac_config_files Makefile udt/Makefile tinyxml/Makefile librtmp/Makefile madmedia/Makefile src/Makefile"
+ac_config_files="$ac_config_files Makefile udt/Makefile tinyxml/Makefile librtmp/Makefile src/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -16209,7 +16209,6 @@ do
     "udt/Makefile") CONFIG_FILES="$CONFIG_FILES udt/Makefile" ;;
     "tinyxml/Makefile") CONFIG_FILES="$CONFIG_FILES tinyxml/Makefile" ;;
     "librtmp/Makefile") CONFIG_FILES="$CONFIG_FILES librtmp/Makefile" ;;
-    "madmedia/Makefile") CONFIG_FILES="$CONFIG_FILES madmedia/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;

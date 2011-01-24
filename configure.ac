@@ -41,4 +41,4 @@ AC_SUBST(KAD_SUPPORT_RTMP)
 AC_SUBST(KAD_LINKLIBS)
 AC_CHECK_FUNCS([floor gethostbyname gettimeofday localtime_r memchr memmove memset pow select socket sqrt strcasecmp strchr strdup strerror strncasecmp strrchr strstr strtol])
 
-AC_OUTPUT(Makefile udt/Makefile tinyxml/Makefile librtmp/Makefile madmedia/Makefile src/Makefile)
+AC_OUTPUT(Makefile udt/Makefile tinyxml/Makefile librtmp/Makefile src/Makefile)
