@@ -53,3 +53,12 @@
 /src/.deps/kadpeer-kadroutingtable.Po
 /src/.deps/kadpeer-kbucket.Po
 /src/.deps/kadpeer-sha1.Po
+/src/.deps/kadpeer-KademliaService.Po
+/src/.deps/kadpeer-contact_info_constants.Po
+/src/.deps/kadpeer-contact_info_types.Po
+/src/.deps/kadpeer-kademlia_service_constants.Po
+/src/.deps/kadpeer-kademlia_service_messages_constants.Po
+/src/.deps/kadpeer-kademlia_service_messages_types.Po
+/src/.deps/kadpeer-kademlia_service_types.Po
+/src/.deps/kadpeer-signed_kadvalue_constants.Po
+/src/.deps/kadpeer-signed_kadvalue_types.Po

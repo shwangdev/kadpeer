@@ -17,46 +17,46 @@
 
 namespace kad{
 
-    class Contact;
+    // class Contact;
 
-    class ContactInfo{
+    // class ContactInfo{
+    class ContactInfo;
+    // public:
+    //     friend class Contact;
 
-    public:
-        friend class Contact;
+    //     ContactInfo():element(new TiXmlElement("ContactInfo")){}
 
-        ContactInfo():element(new TiXmlElement("ContactInfo")){}
+    //     bool has_attr(char * name);
+    //     bool has_attr(std::string name);
 
-        bool has_attr(char * name);
-        bool has_attr(std::string name);
+    //     // bool * get_attr_val(char *name , void *val );
 
-        // bool * get_attr_val(char *name , void *val );
+    //     void set_host_ip( char * ip );
+    //     void set_host_ip( std::string ip);
+    //     void set_host_port( unsigned short port);
 
-        void set_host_ip( char * ip );
-        void set_host_ip( std::string ip);
-        void set_host_port( unsigned short port);
+    //     void set_local_ip( char *ip );
+    //     void set_local_ip( std::string ip);
+    //     void set_local_port( unsigned short port);
 
-        void set_local_ip( char *ip );
-        void set_local_ip( std::string ip);
-        void set_local_port( unsigned short port);
+    //     void set_rendezvous_ip( char * ip );
+    //     void set_rendezvous_ip( std::string ip);
+    //     void set_rendezvous_port(unsigned short int port);
 
-        void set_rendezvous_ip( char * ip );
-        void set_rendezvous_ip( std::string ip);
-        void set_rendezvous_port(unsigned short int port);
+    //     void set_id( char * id );
+    //     void set_id( std::string id);
+    //     void set_id( KadID id);
+    //     void set_id( BigInt::Rossi id);
+    //     ~ContactInfo()
+    //     {
+    //         delete element;
+    //     }
 
-        void set_id( char * id );
-        void set_id( std::string id);
-        void set_id( KadID id);
-        void set_id( BigInt::Rossi id);
-        ~ContactInfo()
-        {
-            delete element;
-        }
+    // private:
 
-    private:
+    //     TiXmlElement * element;
 
-        TiXmlElement * element;
-
-    };
+    // };
 
 
     class Contact{
@@ -94,8 +94,8 @@ namespace kad{
 
         explicit Contact(const ContactInfo &contact_info);
 
-        bool SerialiseToXmlElement(ContactInfo *serialised_output);
-        bool ParseFromXmlElement(ContactInfo &data);
+        //bool SerialiseToXmlElement(ContactInfo *serialised_output);
+        //bool ParseFromXmlElement(ContactInfo &data);
 
         std::string DebugString() const;
         inline bool Equals( const Contact & other ){

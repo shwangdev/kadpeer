@@ -11,6 +11,15 @@ kadpeer_SOURCES = kademlia/contact.cpp\
                   common/HashMap.cpp\
   			      common/BigInt.cpp\
                   common/TThread.cpp\
+				  thrift/gen-cpp/contact_info_constants.cpp\
+			      thrift/gen-cpp/KademliaService.cpp\
+			      thrift/gen-cpp/signed_kadvalue_types.cpp\
+				  thrift/gen-cpp/contact_info_types.cpp\
+				  thrift/gen-cpp/kademlia_service_messages_constants.cpp\
+				  thrift/gen-cpp/kademlia_service_types.cpp\
+				  thrift/gen-cpp/kademlia_service_constants.cpp\
+			      thrift/gen-cpp/kademlia_service_messages_types.cpp\
+			      thrift/gen-cpp/signed_kadvalue_constants.cpp\
 				  ClientSocket.cpp\
 				  ServerSocket.cpp\
 			      Socket.cpp\
@@ -22,6 +31,8 @@ kadpeer_CPPFLAGS = -I ../include \
 		   -I../include/common\
 		   -I../tinyxml\
 		   -I../udt\
-		   -I./kademlia
+		   -I./kademlia\
+		   -I./thrift/gen-cpp\
+		   -I/usr/local/include/thrift
 DEFS=-DTIXML_USE_STL
-LDADD = ../udt/.libs/libudt.a ../tinyxml/.libs/libtinyxml.a ../librtmp/.libs/librtmp.a -lpthread
+LDADD = ../udt/.libs/libudt.a ../tinyxml/.libs/libtinyxml.a ../librtmp/.libs/librtmp.a -lpthread -lthrift

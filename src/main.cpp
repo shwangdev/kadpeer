@@ -178,7 +178,7 @@ int main(int argc, char * argv[])
     else
     {
 
-        ContactInfo info;
+        //ContactInfo info;
         KadID min_id(BigInt::Rossi(1));
         KadID max_id(BigInt::Rossi(10));
         KadID max1,min1;
