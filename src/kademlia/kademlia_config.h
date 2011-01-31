@@ -14,6 +14,7 @@
 namespace kad
 {
     const int KRefreshTime = 3600;
+    typedef boost::function<void(const std::string&)> VoidFunctorOneString;
 }
 
 

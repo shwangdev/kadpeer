@@ -11,6 +11,7 @@
 #include "datastore.h"
 #include <exception>
 #include "TTimer.hh"
+
 namespace kad {
 
     DataStore::DataStore(const uint32_t &t_refresh)
