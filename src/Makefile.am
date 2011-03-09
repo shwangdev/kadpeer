@@ -24,6 +24,9 @@ kadpeer_SOURCES = kademlia/contact.cpp\
 				  thrift/gen-cpp/kademlia_service_constants.cpp\
 			      thrift/gen-cpp/kademlia_service_messages_types.cpp\
 			      thrift/gen-cpp/signed_kadvalue_constants.cpp\
+				  oggplayer/Decoder.cpp\
+				  oggplayer/oggutil.cpp\
+				  oggplayer/SeekBar.cpp\
 				  ClientSocket.cpp\
 				  ServerSocket.cpp\
 			      Socket.cpp\
@@ -37,6 +40,7 @@ kadpeer_CPPFLAGS = -I ../include \
 		   -I../udt\
 		   -I./kademlia\
 		   -I./thrift/gen-cpp\
-		   -I/usr/local/include/thrift
+		   -I/usr/local/include/thrift\
+		   -I./oggplayer
 DEFS=-DTIXML_USE_STL
-LDADD = ../udt/.libs/libudt.a ../tinyxml/.libs/libtinyxml.a ../librtmp/.libs/librtmp.a -lpthread -lthrift -lcryptopp -lboost_filesystem -lboost_system
+LDADD = ../udt/.libs/libudt.a ../tinyxml/.libs/libtinyxml.a ../librtmp/.libs/librtmp.a -lpthread -lthrift -lcryptopp -lboost_filesystem -lboost_system -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0 -loggplay -lfishsound -loggz -lvorbis -ltiger -lkate -logg -lsydneyaudio	-ltheora  -lSDLmain -lSDL -lasound

@@ -63,3 +63,11 @@
 /src/.deps/kadpeer-signed_kadvalue_constants.Po
 /src/.deps/kadpeer-signed_kadvalue_types.Po
 /src/.deps/kadpeer-kadrpc.Po
+/src/.deps/kadpeer-Decoder.Po
+/src/.deps/kadpeer-SeekBar.Po
+/src/.deps/kadpeer-crypto.Po
+/src/.deps/kadpeer-kadservice.Po
+/src/.deps/kadpeer-knodeimpl.Po
+/src/.deps/kadpeer-oggutil.Po
+/src/Makefile
+/src/Makefile.in

@@ -24,9 +24,12 @@
 #include "kadid.h"
 #include "contact.h"
 #include "TTimer.hh"
-
+#include "Decoder.h"
+#include "KateTrack.h"
+#include "oggutil.h"
+#include "SeekBar.h"
 using namespace kad;
-
+extern SDL gSDL;
 
 class Server:public TThreadPool::TJob
 {
@@ -178,16 +181,95 @@ int main(int argc, char * argv[])
     else
     {
 
-        //ContactInfo info;
-        KadID min_id(BigInt::Rossi(1));
-        KadID max_id(BigInt::Rossi(10));
-        KadID max1,min1;
-        kad::KadID::SplitRange(min_id,max_id,& min1,&max1);
-        //std::cout<<max1<<"\t"<<min1<<std::endl;
-        //std::cout<<KadID::KMaxID()<<std::endl;
-        //std::cout<<KadID::KMinID()<<std::endl;
-        TTimer timer;
-        std::cout<<static_cast<uint32_t>(timer.current())<<std::endl;
+        int video_track = UNSELECTED, audio_track = UNSELECTED, kate_track = UNSELECTED;
+
+        char* path = NULL;
+        for (int n=1; n<argc; ++n) {
+            if (argv[n][0] == '-') {
+                if (strcmp(argv[n], "--sdl-yuv") == 0) {
+                    gSDL.use_sdl_yuv = true;
+                }
+                else if (strcmp(argv[n], "--fuzz-mode") == 0) {
+                    gSDL.fuzz_mode = true;
+                }
+                else if (!parse_track_index_parameter(argc, argv, n, "--video-track", video_track)) {
+                }
+                else if (!parse_track_index_parameter(argc, argv, n, "--audio-track", audio_track)) {
+                }
+                else if (!parse_track_index_parameter(argc, argv, n, "--kate-track", kate_track)) {
+                }
+                else {
+                    usage();
+                }
+            }
+            else {
+                if (path) {
+                    cerr << "Only one stream may be specified" << endl;
+                }
+                else {
+                    path = (char*)argv[n];
+                }
+            }
+        }
+
+        if (!path) {
+            usage();
+        }
+
+        OggPlayReader* reader = 0;
+        if (strncmp(path, "http://", 7) == 0)
+            reader = oggplay_tcp_reader_new(path, NULL, 0);
+        else
+            reader = oggplay_file_reader_new(path);
+
+        assert(reader);
+
+        shared_ptr<OggPlay> player(oggplay_open_with_reader(reader), oggplay_close);
+        assert(player);
+
+        vector<shared_ptr<Track> > tracks;
+        load_metadata(player, back_inserter(tracks));
+        for_each(tracks.begin(), tracks.end(), dump_track);
+
+        shared_ptr<TheoraTrack> video(get_track<TheoraTrack>(video_track, tracks.begin(), tracks.end()));
+        shared_ptr<VorbisTrack> audio(get_track<VorbisTrack>(audio_track, tracks.begin(), tracks.end()));
+        shared_ptr<KateTrack> kate(get_track<KateTrack>(kate_track, tracks.begin(), tracks.end()));
+
+        cout << "Using the following tracks: " << endl;
+        if (video) {
+            video->setActive();
+            oggplay_set_callback_num_frames(player.get(), video->mIndex, 1);
+            cout << "  " << video->toString() << endl;
+
+        }
+        if (audio) {
+            audio->setActive();
+            if (!video)
+                oggplay_set_callback_num_frames(player.get(), audio->mIndex, 2048);
+
+            cout << "  " << audio->toString() << endl;
+        }
+
+        if (kate) {
+            kate->setActive();
+            if (video) {
+                oggplay_convert_video_to_rgb(player.get(), video->mIndex, 1, 0);
+                oggplay_overlay_kate_track_on_video(player.get(), kate->mIndex, video->mIndex);
+            }
+            else {
+                oggplay_set_kate_tiger_rendering(player.get(), kate->mIndex, 1, 0, 640, 480);
+            }
+            if (!audio && !video)
+                oggplay_set_callback_period(player.get(), kate->mIndex, 40);
+
+            cout << "  " << kate->toString() << endl;
+        }
+
+        play(player, audio, video, kate);
+
+        return 0;
+
+
     }
     UDT::cleanup();
 }
