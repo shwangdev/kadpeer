@@ -6,12 +6,13 @@ kadpeer_SOURCES = kademlia/contact.cpp\
 				  kademlia/kbucket.cpp\
 				  kademlia/kadrpc.cpp\
 				  kademlia/kadservice.cpp\
+				  kademlia/knodeimpl.cpp\
 				  common/sha1.cpp\
     			  common/TThreadPool.cpp\
  			      common/TTimer.cpp\
 				  common/blah.cpp\
                   common/HashMap.cpp\
-		  common/crypto.cpp\
+		  		  common/crypto.cpp\
   			      common/BigInt.cpp\
                   common/TThread.cpp\
 				  thrift/gen-cpp/contact_info_constants.cpp\
@@ -38,4 +39,4 @@ kadpeer_CPPFLAGS = -I ../include \
 		   -I./thrift/gen-cpp\
 		   -I/usr/local/include/thrift
 DEFS=-DTIXML_USE_STL
-LDADD = ../udt/.libs/libudt.a ../tinyxml/.libs/libtinyxml.a ../librtmp/.libs/librtmp.a -lpthread -lthrift -lcryptopp
+LDADD = ../udt/.libs/libudt.a ../tinyxml/.libs/libtinyxml.a ../librtmp/.libs/librtmp.a -lpthread -lthrift -lcryptopp -lboost_filesystem -lboost_system

@@ -56,7 +56,7 @@ const uint32_t kRpcBootstrapTimeout = 7;  // 7secs
                      const std::string &ip, const uint16_t & port,
                      const std::string &rv_ip, const uint16_t & rv_port,
                      StoreResponse * resp, const uint32_t & ttl, bool publish);
-        void Downlist( const std::vector<std::string> downlist,
+        void Downlist( const std::vector<kad::ContactInfo> downlist,
                        const std::string & ip, const uint16_t & port,
                        const std::string &rv_ip, const uint16_t & rv_port,
                        DownlistResponse *resp);

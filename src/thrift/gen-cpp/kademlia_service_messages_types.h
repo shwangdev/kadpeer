@@ -413,15 +413,15 @@ typedef struct _DownlistRequest__isset {
 class DownlistRequest {
  public:
 
-  static const char* ascii_fingerprint; // = "133299DFCC3066AFC95243057B4A3AF7";
-  static const uint8_t binary_fingerprint[16]; // = {0x13,0x32,0x99,0xDF,0xCC,0x30,0x66,0xAF,0xC9,0x52,0x43,0x05,0x7B,0x4A,0x3A,0xF7};
+  static const char* ascii_fingerprint; // = "057BE37F71643E0F152B9B3CD12EEE01";
+  static const uint8_t binary_fingerprint[16]; // = {0x05,0x7B,0xE3,0x7F,0x71,0x64,0x3E,0x0F,0x15,0x2B,0x9B,0x3C,0xD1,0x2E,0xEE,0x01};
 
   DownlistRequest() {
   }
 
   virtual ~DownlistRequest() throw() {}
 
-  std::vector<std::string>  downlist;
+  std::vector<kad::ContactInfo>  downlist;
   kad::ContactInfo sender_info;
 
   _DownlistRequest__isset __isset;

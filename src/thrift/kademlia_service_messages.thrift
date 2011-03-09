@@ -57,7 +57,7 @@ struct StoreResponse {
 }
 
 struct DownlistRequest {
-  1: list<string> downlist ,
+  1: list<contact_info.ContactInfo> downlist ,
   2:  contact_info.ContactInfo sender_info ,
 }
 

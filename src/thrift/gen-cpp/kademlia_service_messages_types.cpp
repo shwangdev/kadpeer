@@ -741,8 +741,8 @@ uint32_t StoreResponse::write(::apache::thrift::protocol::TProtocol* oprot) cons
   return xfer;
 }
 
-const char* DownlistRequest::ascii_fingerprint = "133299DFCC3066AFC95243057B4A3AF7";
-const uint8_t DownlistRequest::binary_fingerprint[16] = {0x13,0x32,0x99,0xDF,0xCC,0x30,0x66,0xAF,0xC9,0x52,0x43,0x05,0x7B,0x4A,0x3A,0xF7};
+const char* DownlistRequest::ascii_fingerprint = "057BE37F71643E0F152B9B3CD12EEE01";
+const uint8_t DownlistRequest::binary_fingerprint[16] = {0x05,0x7B,0xE3,0x7F,0x71,0x64,0x3E,0x0F,0x15,0x2B,0x9B,0x3C,0xD1,0x2E,0xEE,0x01};
 
 uint32_t DownlistRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
 
@@ -775,7 +775,7 @@ uint32_t DownlistRequest::read(::apache::thrift::protocol::TProtocol* iprot) {
             uint32_t _i22;
             for (_i22 = 0; _i22 < _size18; ++_i22)
             {
-              xfer += iprot->readString(this->downlist[_i22]);
+              xfer += this->downlist[_i22].read(iprot);
             }
             iprot->readListEnd();
           }
@@ -809,11 +809,11 @@ uint32_t DownlistRequest::write(::apache::thrift::protocol::TProtocol* oprot) co
   xfer += oprot->writeStructBegin("DownlistRequest");
   xfer += oprot->writeFieldBegin("downlist", ::apache::thrift::protocol::T_LIST, 1);
   {
-    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, this->downlist.size());
-    std::vector<std::string> ::const_iterator _iter23;
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, this->downlist.size());
+    std::vector<kad::ContactInfo> ::const_iterator _iter23;
     for (_iter23 = this->downlist.begin(); _iter23 != this->downlist.end(); ++_iter23)
     {
-      xfer += oprot->writeString((*_iter23));
+      xfer += (*_iter23).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }

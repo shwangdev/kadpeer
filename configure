@@ -4415,6 +4415,7 @@ fi
 
 
 
+
 # Checks for libraries.
 # Checks for OGG
 HAVE_OGG=no
@@ -4862,6 +4863,7 @@ rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
     CFLAGS="$ac_save_CFLAGS"
     LIBS="$ac_save_LIBS"
 fi
+
 
 
 
@@ -5742,7 +5744,7 @@ fi
 done
 
 
-for ac_header in arpa/inet.h oggz/oggz.h tinyxml.h fcntl.h limits.h netdb.h netinet/in.h stddef.h stdint.h stdlib.h string.h sys/param.h sys/socket.h sys/time.h unistd.h
+for ac_header in crypt.h arpa/inet.h oggz/oggz.h tinyxml.h fcntl.h limits.h netdb.h netinet/in.h stddef.h stdint.h stdlib.h string.h sys/param.h sys/socket.h sys/time.h unistd.h
 do :
   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
 ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"

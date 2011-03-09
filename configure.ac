@@ -10,6 +10,7 @@ AM_INIT_AUTOMAKE
 AC_PROG_CXX
 AC_PROG_CC
 
+
 # Checks for libraries.
 # Checks for OGG
 HAVE_OGG=no
@@ -74,6 +75,7 @@ dnl   fi
 dnl fi
 
 dnl Check for valgrind
+
 
 dnl
 dnl  Detect libkate
@@ -185,7 +187,7 @@ fi
 
 # Checks for header files.
 
-AC_CHECK_HEADERS([arpa/inet.h oggz/oggz.h tinyxml.h fcntl.h limits.h netdb.h netinet/in.h stddef.h stdint.h stdlib.h string.h sys/param.h sys/socket.h sys/time.h unistd.h])
+AC_CHECK_HEADERS([crypt.h arpa/inet.h oggz/oggz.h tinyxml.h fcntl.h limits.h netdb.h netinet/in.h stddef.h stdint.h stdlib.h string.h sys/param.h sys/socket.h sys/time.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_PROG_LIBTOOL

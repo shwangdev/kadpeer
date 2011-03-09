@@ -135,7 +135,7 @@ namespace kad
     }
 
 
-    void KadRpcs::Downlist( const std::vector<std::string> downlist,
+    void KadRpcs::Downlist( const std::vector<kad::ContactInfo> downlist,
                    const std::string & ip, const uint16_t & port,
                    const std::string &rv_ip, const uint16_t & rv_port,
                    DownlistResponse *resp)
