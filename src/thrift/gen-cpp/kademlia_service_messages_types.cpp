@@ -256,8 +256,8 @@ uint32_t FindRequest::write(::apache::thrift::protocol::TProtocol* oprot) const 
   return xfer;
 }
 
-const char* FindResponse::ascii_fingerprint = "2D77DEE16F79DEF4C915EFD7C9B1577E";
-const uint8_t FindResponse::binary_fingerprint[16] = {0x2D,0x77,0xDE,0xE1,0x6F,0x79,0xDE,0xF4,0xC9,0x15,0xEF,0xD7,0xC9,0xB1,0x57,0x7E};
+const char* FindResponse::ascii_fingerprint = "0B33A1108B56325B1B13DADA6E7C51A3";
+const uint8_t FindResponse::binary_fingerprint[16] = {0x0B,0x33,0xA1,0x10,0x8B,0x56,0x32,0x5B,0x1B,0x13,0xDA,0xDA,0x6E,0x7C,0x51,0xA3};
 
 uint32_t FindResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
 
@@ -298,7 +298,7 @@ uint32_t FindResponse::read(::apache::thrift::protocol::TProtocol* iprot) {
             uint32_t _i4;
             for (_i4 = 0; _i4 < _size0; ++_i4)
             {
-              xfer += iprot->readString(this->closest_nodes[_i4]);
+              xfer += this->closest_nodes[_i4].read(iprot);
             }
             iprot->readListEnd();
           }
@@ -399,11 +399,11 @@ uint32_t FindResponse::write(::apache::thrift::protocol::TProtocol* oprot) const
   xfer += oprot->writeFieldEnd();
   xfer += oprot->writeFieldBegin("closest_nodes", ::apache::thrift::protocol::T_LIST, 2);
   {
-    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, this->closest_nodes.size());
-    std::vector<std::string> ::const_iterator _iter15;
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRUCT, this->closest_nodes.size());
+    std::vector<kad::ContactInfo> ::const_iterator _iter15;
     for (_iter15 = this->closest_nodes.begin(); _iter15 != this->closest_nodes.end(); ++_iter15)
     {
-      xfer += oprot->writeString((*_iter15));
+      xfer += (*_iter15).write(oprot);
     }
     xfer += oprot->writeListEnd();
   }

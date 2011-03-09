@@ -56,7 +56,9 @@ namespace kad{
         explicit Contact(const ContactInfo &contact_info);
 
         //bool SerialiseToXmlElement(ContactInfo *serialised_output);
-        //bool ParseFromXmlElement(ContactInfo &data);
+        bool ParseFromThrift(const ContactInfo &data);
+
+        ContactInfo ParseToThrift();
 
         std::string DebugString() const;
         inline bool Equals( const Contact & other ){

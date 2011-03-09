@@ -181,8 +181,8 @@ typedef struct _FindResponse__isset {
 class FindResponse {
  public:
 
-  static const char* ascii_fingerprint; // = "2D77DEE16F79DEF4C915EFD7C9B1577E";
-  static const uint8_t binary_fingerprint[16]; // = {0x2D,0x77,0xDE,0xE1,0x6F,0x79,0xDE,0xF4,0xC9,0x15,0xEF,0xD7,0xC9,0xB1,0x57,0x7E};
+  static const char* ascii_fingerprint; // = "0B33A1108B56325B1B13DADA6E7C51A3";
+  static const uint8_t binary_fingerprint[16]; // = {0x0B,0x33,0xA1,0x10,0x8B,0x56,0x32,0x5B,0x1B,0x13,0xDA,0xDA,0x6E,0x7C,0x51,0xA3};
 
   FindResponse() : result(""), needs_cache_copy(""), requester_ext_addr(""), node_id("") {
   }
@@ -190,7 +190,7 @@ class FindResponse {
   virtual ~FindResponse() throw() {}
 
   std::string result;
-  std::vector<std::string>  closest_nodes;
+  std::vector<kad::ContactInfo>  closest_nodes;
   std::vector<std::string>  values;
   std::vector<kad::SignedValue>  signed_values;
   kad::ContactInfo alternative_value_holder;

@@ -111,6 +111,30 @@ namespace kad
         }
     }
 
+
+    void KadRpcs::Store ( const std::string & key,const SignedValue & value,
+                     const std::string &ip, const uint16_t & port,
+                 const std::string &rv_ip, const uint16_t & rv_port,
+                 StoreResponse * resp, const uint32_t & ttl, bool publish)
+    {
+        KademliaServiceClient client( protocol_ );
+        StoreRequest args;
+        try{
+            transport_->open();
+            args.key = key;
+            args.value = value.value;
+            args.ttl = ttl;
+            args.publish = publish;
+            args.sender_info = info_;
+            client.Store(*resp, args);
+            transport_->close();
+        }catch(apache::thrift::TException & ex)
+        {
+            LOG<<"Store Error"<<std::endl;
+        }
+    }
+
+
     void KadRpcs::Downlist( const std::vector<std::string> downlist,
                    const std::string & ip, const uint16_t & port,
                    const std::string &rv_ip, const uint16_t & rv_port,

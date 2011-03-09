@@ -34,10 +34,12 @@ namespace kad{
 
     KadID::KadID( std::string raw)
     {
-        SHA1 sha1;
-        sha1.Reset();
-        sha1<<raw.c_str();
-        sha1.Result(raw_id);
+        //SHA1 sha1;
+        //sha1.Reset();
+        //sha1<<raw.c_str();
+        //sha1.Result(raw_id);
+        raw_id = BigInt::Rossi(raw,8);
+
     }
 
     KadID::KadID ( BigInt::Rossi raw)
@@ -158,6 +160,10 @@ namespace kad{
         return static_cast<bool> ( ls.raw_id == rs.raw_id );
     }
 
+    bool operator != ( const KadID & ls, const KadID & rs)
+    {
+        return static_cast<bool> ( ls.raw_id != rs.raw_id);
+    }
     BigInt::Rossi KadID::getRawID()
     {
         return this->raw_id;

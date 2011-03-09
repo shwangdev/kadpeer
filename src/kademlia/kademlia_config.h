@@ -16,7 +16,8 @@ namespace kad
 {
     const int KRefreshTime = 3600;
     typedef boost::function<void(const std::string&)> VoidFunctorOneString;
+    const std::string kRpcResultFailure("F");
+    const std::string kRpcResultSuccess("S");
 }
-
 
 #endif

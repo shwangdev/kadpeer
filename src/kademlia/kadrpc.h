@@ -52,6 +52,10 @@ const uint32_t kRpcBootstrapTimeout = 7;  // 7secs
                     const std::string & rv_ip, const uint16_t & rv_port,
                     StoreResponse * resp, const uint32_t & ttl, bool publish);
 
+        void Store ( const std::string & key,const SignedValue & value,
+                     const std::string &ip, const uint16_t & port,
+                     const std::string &rv_ip, const uint16_t & rv_port,
+                     StoreResponse * resp, const uint32_t & ttl, bool publish);
         void Downlist( const std::vector<std::string> downlist,
                        const std::string & ip, const uint16_t & port,
                        const std::string &rv_ip, const uint16_t & rv_port,

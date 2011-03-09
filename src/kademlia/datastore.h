@@ -101,57 +101,57 @@ namespace kad {
                                          expire_time_)
                 >
             >
-    > datastore;
+        > datastore;
 
-class DataStore {
-public:
-    // t_refresh = refresh time of key/value pair in seconds
+    class DataStore {
+    public:
+        // t_refresh = refresh time of key/value pair in seconds
 
-    explicit DataStore(const uint32_t &t_refresh);
+        explicit DataStore(const uint32_t &t_refresh);
 
-    ~DataStore();
-    bool Keys(std::set<std::string> *keys);
-    // time_to_live is in seconds.
+        ~DataStore();
+        bool Keys(std::set<std::string> *keys);
+        // time_to_live is in seconds.
 
-    bool StoreItem(const std::string &key, const std::string &value,
-                   const int32_t &time_to_live, const bool &hashable);
+        bool StoreItem(const std::string &key, const std::string &value,
+                       const int32_t &time_to_live, const bool &hashable);
 
-    bool LoadItem(const std::string &key, std::vector<std::string> *values);
-    bool DeleteKey(const std::string &key);
-    bool DeleteItem(const std::string &key, const std::string &value);
-    void DeleteExpiredValues();
+        bool LoadItem(const std::string &key, std::vector<std::string> *values);
+        bool DeleteKey(const std::string &key);
+        bool DeleteItem(const std::string &key, const std::string &value);
+        void DeleteExpiredValues();
 
-    uint32_t LastRefreshTime(const std::string &key,
-                             const std::string &value);
-    uint32_t ExpireTime(const std::string &key, const std::string &value);
-    std::vector<refresh_value> ValuesToRefresh();
-    int32_t TimeToLive(const std::string &key, const std::string &value);
-    void Clear();
-    std::vector< std::pair<std::string, bool> > LoadKeyAppendableAttr(
-        const std::string &key);
-    bool RefreshItem(const std::string &key, const std::string &value,
-                     std::string *str_delete_req);
-    // If key, value pair does not exist, then it returns false
-    bool MarkForDeletion(const std::string &key, const std::string &value,
-                         const std::string &ser_del_request);
+        uint32_t LastRefreshTime(const std::string &key,
+                                 const std::string &value);
+        uint32_t ExpireTime(const std::string &key, const std::string &value);
+        std::vector<refresh_value> ValuesToRefresh();
+        int32_t TimeToLive(const std::string &key, const std::string &value);
+        void Clear();
+        std::vector< std::pair<std::string, bool> > LoadKeyAppendableAttr(
+            const std::string &key);
+        bool RefreshItem(const std::string &key, const std::string &value,
+                         std::string *str_delete_req);
+        // If key, value pair does not exist, then it returns false
+        bool MarkForDeletion(const std::string &key, const std::string &value,
+                             const std::string &ser_del_request);
 
-    // If key, value pair does not exist or its status is not MARKED_FOR_DELETION,
-    // then it returns false
+        // If key, value pair does not exist or its status is not MARKED_FOR_DELETION,
+        // then it returns false
 
-    bool MarkAsDeleted(const std::string &key, const std::string &value);
+        bool MarkAsDeleted(const std::string &key, const std::string &value);
 
-    bool UpdateItem(const std::string &key,
-                    const std::string &old_value,
-                    const std::string &new_value,
-                    const int32_t &time_to_live,
-                    const bool &hashable);
-    uint32_t t_refresh() const;
-private:
-    datastore datastore_;
-    // refresh time in seconds
-    uint32_t t_refresh_;
-    boost::mutex mutex_;
-};
+        bool UpdateItem(const std::string &key,
+                        const std::string &old_value,
+                        const std::string &new_value,
+                        const int32_t &time_to_live,
+                        const bool &hashable);
+        uint32_t t_refresh() const;
+    private:
+        datastore datastore_;
+        // refresh time in seconds
+        uint32_t t_refresh_;
+        boost::mutex mutex_;
+    };
 
 }
 #endif

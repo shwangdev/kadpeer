@@ -87,5 +87,37 @@ namespace kad{
         return os.str();
     }
 
+
+    bool Contact::ParseFromThrift(const ContactInfo & data)
+    {
+        if ( data.node_id.empty() )
+            return false;
+
+        node_id_ = KadID(data.node_id);
+        host_ip_ = data.ip;
+        host_port_ = data.port;
+        rendezvous_ip_ = data.rendezvous_ip;
+        rendezvous_port_ = data.rendezvous_port;
+        local_ip_ = data.local_ip;
+        local_port_ = data.local_port;
+
+        return true;
+    }
+
+    ContactInfo Contact::ParseToThrift()
+    {
+        ContactInfo info;
+        if ( node_id_ != KadID(0))
+        {
+            info.node_id =BigInt::toString<BigInt::Rossi>(node_id_.getRawID());
+            info.ip = host_ip_;
+            info.port = host_port_;
+            info.rendezvous_ip = rendezvous_ip_;
+            info.rendezvous_port = rendezvous_port_;
+            info.local_ip = local_ip_;
+            info.local_port = local_port_;
+            return info;
+        }
+    }
 }
 

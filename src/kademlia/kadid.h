@@ -85,10 +85,10 @@ namespace kad{
         friend bool operator <  (const KadID & ls, const KadID & rs);
         friend bool operator >  (const KadID & ls, const KadID & rs);
         friend KadID operator ^ ( const KadID & ls, const KadID & rs);
+        friend bool operator != (const KadID & ls, const KadID & rs);
 
         friend std::ostream& operator << ( std::ostream &os , const KadID & id );
 
-    protected:
         BigInt::Rossi getRawID();
     private:
         BigInt::Rossi raw_id;

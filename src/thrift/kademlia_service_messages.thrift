@@ -24,7 +24,7 @@ struct FindRequest {
 
 struct FindResponse {
   1: string result ,
-  2: list<string> closest_nodes ,
+  2: list<contact_info.ContactInfo> closest_nodes ,
   3: list<string> values ,
   4: list<signed_kadvalue.SignedValue> signed_values ,
   5: optional contact_info.ContactInfo alternative_value_holder ,
