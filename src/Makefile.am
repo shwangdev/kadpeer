@@ -4,7 +4,8 @@ kadpeer_SOURCES = kademlia/contact.cpp\
 				  kademlia/kadid.cpp\
 			      kademlia/datastore.cpp\
 				  kademlia/kbucket.cpp\
-		          common/sha1.cpp\
+				  kademlia/kadrpc.cpp\
+				  common/sha1.cpp\
     			  common/TThreadPool.cpp\
  			      common/TTimer.cpp\
 				  common/blah.cpp\
@@ -36,3 +37,4 @@ kadpeer_CPPFLAGS = -I ../include \
 		   -I/usr/local/include/thrift
 DEFS=-DTIXML_USE_STL
 LDADD = ../udt/.libs/libudt.a ../tinyxml/.libs/libtinyxml.a ../librtmp/.libs/librtmp.a -lpthread -lthrift
+LIBS=-lthrift
