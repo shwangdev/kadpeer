@@ -43,4 +43,4 @@ kadpeer_CPPFLAGS = -I ../include \
 		   -I/usr/local/include/thrift\
 		   -I./oggplayer
 DEFS=-DTIXML_USE_STL
-LDADD = ../udt/.libs/libudt.a ../tinyxml/.libs/libtinyxml.a ../librtmp/.libs/librtmp.a -lpthread -lthrift -lcryptopp -lboost_filesystem -lboost_system -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0 -loggplay -lfishsound -loggz -lvorbis -ltiger -lkate -logg -lsydneyaudio	-ltheora  -lSDLmain -lSDL -lasound
+LDADD = ../udt/.libs/libudt.a ../tinyxml/.libs/libtinyxml.a ../librtmp/.libs/librtmp.a -lpthread -lthrift -lcryptopp -lboost_filesystem -lboost_system -lrt -lglib-2.0 -loggplay -lfishsound -loggz -lvorbis -lkate -logg -lsydneyaudio	-ltheora  -lSDLmain -lSDL -lasound
